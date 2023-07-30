@@ -198,8 +198,8 @@ Component({
             const item = e.currentTarget.dataset.item
             Dialog.confirm({
                     context: this,
-                    // title: '弹窗标题',
-                    content: `${item}\n删除后不可恢复\n已打卡记录依然保留`,
+                    title: item,
+                    content: '删除后不可恢复\n已打卡记录依然保留',
                     confirmBtn: {
                         content: '确定',
                         variant: 'base',
