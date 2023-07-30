@@ -73,7 +73,8 @@ let ActionSheet = class ActionSheet extends SuperComponent {
                 const realIndex = isSwiperMode ? index + currentSwiperIndex * count : index;
                 if (item) {
                     this.triggerEvent('selected', { selected: item, index: realIndex });
-                    this.trigger('close', { trigger: 'select' });
+                    // 修复点击选项时报错"this.trigger is not a function" fix(action-sheet): resolve click event https://github.com/Tencent/tdesign-miniprogram/pull/1726
+                    this.triggerEvent('close', { trigger: 'select' });
                     this._trigger('visible-change', { visible: false });
                 }
             },
