@@ -1,3 +1,6 @@
+<t-toast id="t-toast" />
+<t-dialog id="t-dialog" />
+
 <t-sticky>
     <view class="center date-format">
         <text>{{ dateFormat }}</text>

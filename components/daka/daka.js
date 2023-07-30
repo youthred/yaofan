@@ -1,4 +1,6 @@
 const dateUtil = require('../../utils/date-util')
+import Toast from 'tdesign-miniprogram/toast/index'
+import Dialog from 'tdesign-miniprogram/dialog/index'
 
 Component({
     pageLifetimes: {
@@ -52,22 +54,29 @@ Component({
                 'checkBtn.disabled': this.data.checkBox.options.map(o => o.value).filter(i => this.data.checkBox.selected.includes(i)).length === 0
             })
         },
-        check() {
-            const selected = this.data.checkBox.selected || []
-            console.log(selected)
-            // if (selected.length === 0) {
-            //     return
-            // }
-            // let checked = wx.getStorageSync('checked') || {}
-            // checked[this.data.dateFormat] = selected
-            // wx.setStorageSync('checked', checked)
-            // wx.setStorageSync('dakaItemsLastSelected', selected)
-        },
         onCheckChange(event) {
             this.setData({
                 'checkBox.selected': event.detail.value
             })
             this.setCheckBtn()
-        }
+        },
+        check() {
+            const selected = this.data.checkBox.selected || []
+            console.log(selected)
+            if (selected.length === 0) {
+                return
+            }
+            let checked = wx.getStorageSync('checked') || {}
+            checked[this.data.dateFormat] = selected
+            wx.setStorageSync('checked', checked)
+            wx.setStorageSync('dakaItemsLastSelected', selected)
+            Toast({
+                context: this,
+                selector: '#t-toast',
+                message: '打卡成功',
+                theme: 'success',
+                direction: 'column',
+            })
+        },
     },
 });

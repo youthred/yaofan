@@ -4,6 +4,8 @@
         "t-sticky": "tdesign-miniprogram/sticky/sticky",
         "t-checkbox-group": "tdesign-miniprogram/checkbox-group/checkbox-group",
         "t-checkbox": "tdesign-miniprogram/checkbox/checkbox",
-        "t-empty": "tdesign-miniprogram/empty/empty"
+        "t-empty": "tdesign-miniprogram/empty/empty",
+        "t-toast": "tdesign-miniprogram/toast/toast",
+        "t-dialog": "tdesign-miniprogram/dialog/dialog"
     }
 }
