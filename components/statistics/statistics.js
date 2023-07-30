@@ -23,8 +23,27 @@ Component({
         },
         statistics: {
             showStatisticsTypeSheetHandler: null,
-            showType: 0,
-            checked: {}
+            showType: {
+                index: 0,
+                types: [{
+                        label: '项目',
+                        collapseActive: 0
+                    },
+                    {
+                        label: '日期',
+                        collapseActive: 0
+                    },
+                    {
+                        label: '热力图',
+                        collapseActive: 0
+                    }
+                ]
+            },
+            checked: {
+                byItem: {},
+                byDate: {},
+                byHeatmap: {}
+            }
         },
         config: {
             ndi: null,
@@ -58,8 +77,30 @@ Component({
         // -------------------------------------------------------------- 统计 --------------------------------------------------------------
 
         setChecked() {
+            const checkedByDate = wx.getStorageSync('checked') || {}
+            if (Object.keys(checkedByDate).length === 0) {
+                return
+            }
+            let checkedByItem = {}
+            Object.keys(checkedByDate).forEach(k => {
+                checkedByDate[k].forEach(i => {
+                    let iv = checkedByItem[i] || []
+                    iv.push(k)
+                    checkedByItem[i] = iv
+                })
+            })
+            let checkedByItemSorted = {}
+            // 对象按照KEY排序
+            Object.keys(checkedByItem).sort().forEach(k => checkedByItemSorted[k] = checkedByItem[k])
+            // let items = new Set()
+            // Object.values(checkedByDate).forEach(v => {
+            //     v.forEach(i => items.add(i))
+            // })
+            // items = Array.from(items).sort()
+            // console.log(items)
             this.setData({
-                'statistics.checked': wx.getStorageSync('checked') || {}
+                'statistics.checked.byItem': checkedByItemSorted,
+                'statistics.checked.byDate': checkedByDate
             })
         },
 
@@ -67,18 +108,7 @@ Component({
             const handler = ActionSheet.show({
                 theme: ActionSheetTheme.List,
                 selector: '#statisticsTypeSheet',
-                items: [{
-                        label: '默认选项',
-                    },
-                    {
-                        label: '失效选项',
-                        disabled: true,
-                    },
-                    {
-                        label: '警告选项',
-                        color: '#e34d59',
-                    },
-                ],
+                items: this.data.statistics.showType.types,
             })
             this.setData({
                 'statistics.showStatisticsTypeSheetHandler': handler
@@ -88,7 +118,22 @@ Component({
             this.data.statistics.showStatisticsTypeSheetHandler.close()
         },
         handleStatisticsTypeSheetSelected(e) {
-            console.log(e.detail);
+            const dtl = e.detail
+            this.setData({
+                'statistics.showType.index': dtl.index
+            })
+        },
+
+        handleCollapseChangeForItem(e) {
+            this.setData({
+                'statistics.showType.types[0].collapseActive': e.detail.value,
+            });
+        },
+
+        handleCollapseChangeForDate(e) {
+            this.setData({
+                'statistics.showType.types[1].collapseActive': e.detail.value,
+            });
         },
 
 

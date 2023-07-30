@@ -8,6 +8,8 @@
         "t-toast": "tdesign-miniprogram/toast/toast",
         "t-dialog": "tdesign-miniprogram/dialog/dialog",
         "t-fab": "tdesign-miniprogram/fab/fab",
-        "t-action-sheet": "tdesign-miniprogram/action-sheet/action-sheet"
+        "t-action-sheet": "tdesign-miniprogram/action-sheet/action-sheet",
+        "t-collapse": "tdesign-miniprogram/collapse/collapse",
+        "t-collapse-panel": "tdesign-miniprogram/collapse-panel/collapse-panel"
     }
 }
