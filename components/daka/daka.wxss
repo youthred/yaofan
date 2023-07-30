@@ -1,0 +1,18 @@
+.divider {
+    padding: 32rpx 0;
+}
+
+.center {
+    text-align: center;
+}
+
+.date-format {
+    font-size: 100rpx;
+    font-family: fantasy;
+    background-color: #f6f6f6;
+    padding: 64rpx 0;
+}
+
+.check-btn {
+    margin: 0 32rpx;
+}

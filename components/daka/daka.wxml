@@ -1,0 +1,21 @@
+<t-sticky>
+    <view class="center date-format">
+        <text>{{ dateFormat }}</text>
+    </view>
+</t-sticky>
+<t-empty wx:if="{{checkBox.options.length === 0}}" icon="info-circle-filled" description="[统计 > 设置] 以新增打卡项" />
+<t-checkbox-group value="{{checkBox.selected}}" bind:change="onCheckChange">
+    <t-checkbox wx:key="index" wx:for="{{checkBox.options}}" value="{{item.value}}" label="{{item.label}}" />
+</t-checkbox-group>
+<view class="divider" />
+
+<view class="center">
+    <view class="check-btn">
+    <!-- checkBox.options.map(o => o.value).filter(i => checkBox.selected.includes(i)).length === 0 -->
+        <t-button theme="primary" size="large" block bindtap="check" disabled="{{checkBtn.disabled}}">滴!</t-button>
+    </view>
+</view>
+
+<view class="divider" />
+<view class="divider" />
+<view style="padding-top: 40rpx;" />

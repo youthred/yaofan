@@ -1,0 +1,9 @@
+{
+    "component": true,
+    "usingComponents": {
+        "t-sticky": "tdesign-miniprogram/sticky/sticky",
+        "t-checkbox-group": "tdesign-miniprogram/checkbox-group/checkbox-group",
+        "t-checkbox": "tdesign-miniprogram/checkbox/checkbox",
+        "t-empty": "tdesign-miniprogram/empty/empty"
+    }
+}

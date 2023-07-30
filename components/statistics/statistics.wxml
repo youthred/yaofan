@@ -1,0 +1,28 @@
+<t-toast id="t-toast" />
+<t-dialog id="t-dialog" />
+<t-tabs defaultValue="{{0}}" sticky stickyProps="{{stickyProps}}" bind:change="onTabsChange" bind:click="onTabsClick" bind:scroll="onStickyScroll" t-class="custom-tabs">
+
+    <!-- 统计 -->
+    <t-tab-panel label="统计" value="0">
+        <t-fab icon="more" bind:click="changeStatisticsShowType" text="{{'asd'}}" style="right: 16px; bottom: 64px;" />
+        {{Object.values(statistics.checked)}}
+    </t-tab-panel>
+
+    <!-- 设置 -->
+    <t-tab-panel label="设置" value="1">
+        <view>
+            <t-cell wx:key="index" wx:for="{{config.dakaItems}}" title="{{item}}">
+                <view slot="right-icon">
+                    <!-- <t-button theme="primary" shape="circle" icon="edit" size="extra-small" variant="text" /> -->
+                    <t-button theme="danger" shape="circle" icon="close" size="extra-small" variant="text" style="margin-left: 20rpx;" data-item="{{item}}" bindtap="delDakaItemBtn" />
+                </view>
+            </t-cell>
+        </view>
+        <!-- <view>
+            <t-button theme="light" size="large" block icon="add" t-class="add-btn" />
+        </view> -->
+        <t-input confirm-type="done" placeholder="新增打卡项" maxcharacter="{{30}}" bind:enter="addDakaItem" clearable value="{{config.ndi}}" />
+    </t-tab-panel>
+
+</t-tabs>
+<view style="padding: 40rpx 0;" />

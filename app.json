@@ -1,0 +1,36 @@
+{
+    "pages": [
+        "components/daka/daka",
+        "components/buka/buka",
+        "components/statistics/statistics"
+    ],
+    "subpackages": [],
+    "usingComponents": {
+        "t-icon": "tdesign-miniprogram/icon/icon",
+        "t-button": "tdesign-miniprogram/button/button"
+    },
+    "tabBar": {
+        "custom": true,
+        "list": [{
+                "pagePath": "components/buka/buka",
+                "text": "补卡"
+            },
+            {
+                "pagePath": "components/daka/daka",
+                "text": "打卡"
+            },
+            {
+                "pagePath": "components/statistics/statistics",
+                "text": "统计"
+            }
+        ]
+    },
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#f6f6f6",
+        "backgroundColor": "#f6f6f6",
+        "navigationBarTitleText": "M01",
+        "navigationBarTextStyle": "black"
+    },
+    "sitemapLocation": "sitemap.json"
+}
