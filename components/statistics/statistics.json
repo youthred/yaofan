@@ -7,6 +7,7 @@
         "t-input": "tdesign-miniprogram/input/input",
         "t-toast": "tdesign-miniprogram/toast/toast",
         "t-dialog": "tdesign-miniprogram/dialog/dialog",
-        "t-fab": "tdesign-miniprogram/fab/fab"
+        "t-fab": "tdesign-miniprogram/fab/fab",
+        "t-action-sheet": "tdesign-miniprogram/action-sheet/action-sheet"
     }
 }

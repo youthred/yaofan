@@ -1,5 +1,8 @@
 import Toast from 'tdesign-miniprogram/toast/index'
 import Dialog from 'tdesign-miniprogram/dialog/index'
+import ActionSheet, {
+    ActionSheetTheme
+} from 'tdesign-miniprogram/action-sheet/index'
 
 Component({
     pageLifetimes: {
@@ -19,6 +22,7 @@ Component({
             zIndex: 2,
         },
         statistics: {
+            showStatisticsTypeSheetHandler: null,
             showType: 0,
             checked: {}
         },
@@ -59,8 +63,32 @@ Component({
             })
         },
 
-        changeStatisticsShowType() {
-
+        showStatisticsTypeSheet() {
+            const handler = ActionSheet.show({
+                theme: ActionSheetTheme.List,
+                selector: '#statisticsTypeSheet',
+                items: [{
+                        label: '默认选项',
+                    },
+                    {
+                        label: '失效选项',
+                        disabled: true,
+                    },
+                    {
+                        label: '警告选项',
+                        color: '#e34d59',
+                    },
+                ],
+            })
+            this.setData({
+                'statistics.showStatisticsTypeSheetHandler': handler
+            })
+        },
+        cancelStatisticsTypeSheet() {
+            this.data.statistics.showStatisticsTypeSheetHandler.close()
+        },
+        handleStatisticsTypeSheetSelected(e) {
+            console.log(e.detail);
         },
 
 

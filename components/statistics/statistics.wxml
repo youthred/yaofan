@@ -1,10 +1,12 @@
 <t-toast id="t-toast" />
 <t-dialog id="t-dialog" />
+
 <t-tabs defaultValue="{{0}}" sticky stickyProps="{{stickyProps}}" bind:change="onTabsChange" bind:click="onTabsClick" bind:scroll="onStickyScroll" t-class="custom-tabs">
 
     <!-- 统计 -->
     <t-tab-panel label="统计" value="0">
-        <t-fab icon="more" bind:click="changeStatisticsShowType" text="{{'asd'}}" style="right: 16px; bottom: 64px;" />
+        <t-fab icon="more" bind:click="showStatisticsTypeSheet" text="{{'asd'}}" style="right: 16px; bottom: 64px;" />
+        <t-action-sheet id="statisticsTypeSheet" bind:selected="handleStatisticsTypeSheetSelected" bind:cancel="cancelStatisticsTypeSheet" />
         {{Object.values(statistics.checked)}}
     </t-tab-panel>
 
