@@ -202,7 +202,7 @@ Component({
                     content: '删除后不可恢复\n已打卡记录依然保留',
                     confirmBtn: {
                         content: '确定',
-                        variant: 'base',
+                        // variant: 'base',
                         theme: 'danger'
                     },
                     cancelBtn: '取消',

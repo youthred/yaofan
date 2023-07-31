@@ -62,10 +62,35 @@ Component({
         },
         check() {
             const selected = this.data.checkBox.selected || []
-            console.log(selected)
             if (selected.length === 0) {
                 return
             }
+            const checked = wx.getStorageSync('checked') || {}
+            if (this.data.dateFormat in checked) {
+                Dialog.confirm({
+                        context: this,
+                        // title: '',
+                        content: '今日已打卡，确定覆盖吗',
+                        confirmBtn: {
+                            content: '确定',
+                            // variant: 'base',
+                            theme: 'primary'
+                        },
+                        cancelBtn: '取消',
+                    })
+                    .then(() => {
+                        this.doCheck()
+                    })
+                    .catch(() => {
+                        // 点击了'取消'
+                    })
+                    .finally(() => Dialog.close());
+                    return
+            }
+            this.doCheck()
+        },
+        doCheck() {
+            const selected = this.data.checkBox.selected || []
             let checked = wx.getStorageSync('checked') || {}
             checked[this.data.dateFormat] = selected
             wx.setStorageSync('checked', checked)
@@ -77,6 +102,6 @@ Component({
                 theme: 'success',
                 direction: 'column',
             })
-        },
+        }
     },
 });
