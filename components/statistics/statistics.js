@@ -13,6 +13,7 @@ Component({
                     value: '2'
                 })
             }
+            this.setStatisticsDisplay()
             this.setDakaItems()
             this.setChecked()
         }
@@ -22,6 +23,7 @@ Component({
             zIndex: 2,
         },
         statistics: {
+            display: false,
             showStatisticsTypeSheetHandler: null,
             showType: {
                 index: 0,
@@ -75,6 +77,12 @@ Component({
 
 
         // -------------------------------------------------------------- 统计 --------------------------------------------------------------
+
+        setStatisticsDisplay() {
+            this.setData({
+                'statistics.display': Object.keys(wx.getStorageSync('checked') || {}).length > 0
+            })
+        },
 
         setChecked() {
             const checkedByDate = wx.getStorageSync('checked') || {}

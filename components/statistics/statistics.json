@@ -10,6 +10,7 @@
         "t-fab": "tdesign-miniprogram/fab/fab",
         "t-action-sheet": "tdesign-miniprogram/action-sheet/action-sheet",
         "t-collapse": "tdesign-miniprogram/collapse/collapse",
-        "t-collapse-panel": "tdesign-miniprogram/collapse-panel/collapse-panel"
+        "t-collapse-panel": "tdesign-miniprogram/collapse-panel/collapse-panel",
+        "t-empty": "tdesign-miniprogram/empty/empty"
     }
 }

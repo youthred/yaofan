@@ -5,24 +5,28 @@
 
     <!-- 统计 -->
     <t-tab-panel label="统计" value="0">
-        <t-fab icon="more" bind:click="showStatisticsTypeSheet" style="right: 16px; bottom: 64px;" />
-        <t-action-sheet id="statisticsTypeSheet" bind:selected="handleStatisticsTypeSheetSelected" bind:cancel="cancelStatisticsTypeSheet" />
-        <view wx:if="{{statistics.showType.index === 0}}">
-            <t-collapse value="{{statistics.showType.types[0].collapseActive}}" bind:change="handleCollapseChangeForItem">
-                <t-collapse-panel wx:key="index" wx:for="{{statistics.checked.byItem}}" header="{{index}}" value="{{index}}" expandIcon>
-                    {{item}}
-                </t-collapse-panel>
-            </t-collapse>
+        <view wx:if="{{statistics.display}}">
+            <t-fab icon="more" bind:click="showStatisticsTypeSheet" style="right: 16px; bottom: 64px; z-index: 999;" />
+            <t-action-sheet id="statisticsTypeSheet" bind:selected="handleStatisticsTypeSheetSelected" bind:cancel="cancelStatisticsTypeSheet" />
+            <view wx:if="{{statistics.showType.index === 0}}">
+                <t-collapse value="{{statistics.showType.types[0].collapseActive}}" bind:change="handleCollapseChangeForItem">
+                    <t-collapse-panel wx:key="index" wx:for="{{statistics.checked.byItem}}" header="{{index}}" value="{{index}}" expandIcon>
+                        {{item}}
+                    </t-collapse-panel>
+                </t-collapse>
+            </view>
+            <view wx:if="{{statistics.showType.index === 1}}">
+                <t-collapse value="{{statistics.showType.types[1].collapseActive}}" bind:change="handleCollapseChangeForDate">
+                    <t-collapse-panel wx:key="index" wx:for="{{statistics.checked.byDate}}" header="{{index}}" value="{{index}}" expandIcon>
+                        {{item}}
+                    </t-collapse-panel>
+                </t-collapse>
+            </view>
+            <view wx:if="{{statistics.showType.index === 2}}">热力图 - 开发中</view>
         </view>
-        <view wx:if="{{statistics.showType.index === 1}}">
-            <t-collapse value="{{statistics.showType.types[1].collapseActive}}" bind:change="handleCollapseChangeForDate">
-                <t-collapse-panel wx:key="index" wx:for="{{statistics.checked.byDate}}" header="{{index}}" value="{{index}}" expandIcon>
-                    {{item}}
-                </t-collapse-panel>
-            </t-collapse>
+        <view wx:if="{{!statistics.display}}">
+            <t-empty icon="info-circle-filled" description="请打卡" />
         </view>
-        <view wx:if="{{statistics.showType.index === 2}}">热力图 - 开发中</view>
-        {{Object.values(statistics.checked)}}
     </t-tab-panel>
 
     <!-- 设置 -->
