@@ -38,7 +38,7 @@ Component({
             })
         },
         setCheckBox() {
-            const options = wx.getStorageSync('dakaItems').map(item => {
+            const options = (wx.getStorageSync('dakaItems') || []).map(item => {
                 return {
                     label: item,
                     value: item
