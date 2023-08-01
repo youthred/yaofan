@@ -6,6 +6,6 @@
 - [x] 统计
 - [ ] 补卡
 
-- 体验版
+体验版
 
-    ![体验版](yaofan-qrcode-v0.1.1.jpg)
+![体验版](yaofan-qrcode-v0.1.1.jpg)
