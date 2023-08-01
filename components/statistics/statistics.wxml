@@ -25,7 +25,7 @@
             <view wx:if="{{statistics.showType.index === 2}}">热力图 - 开发中</view>
         </view>
         <view wx:if="{{!statistics.display}}">
-            <t-empty icon="info-circle-filled" description="请打卡" />
+            <t-empty icon="info-circle-filled" description="请打卡" style="padding: 32rpx 0;" />
         </view>
     </t-tab-panel>
 

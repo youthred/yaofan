@@ -1,2 +1,2 @@
-<!--components/buka/buka.wxml-->
-<text>components/buka/buka.wxml</text>
+<t-calendar visible="{{calendar.visible}}" bind:confirm="confirmCalendar" type="multiple" minDate="{{calendar.range.minDate}}" maxDate="{{calendar.range.maxDate}}" value="{{calendar.select}}" />
+<t-cell arrow title="选择日期" bind:tap="handleCalendar" />
